@@ -283,8 +283,8 @@ TEST(BitArrayTests, Empty) {
 }
 
 TEST(BitArrayTests, ToString) {
-	BitArray test(48, 88482574266222);
-	ASSERT_EQ(test.to_string(), "Python");
+	BitArray test(48, 616470711952);
+	ASSERT_EQ(test.to_string(), "ПИДОP");
 }
 
 TEST(BitArrayTests, BitSequence) {
