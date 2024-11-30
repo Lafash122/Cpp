@@ -2,26 +2,23 @@
 
 #define BYTE 8
 
-BitArray::Wrapper::Wrapper(int bit_pos, const char& byte) : bit_pos(bit_pos), byte(const_cast<char &>(byte)) {}
+BitArray::Wrapper::Wrapper(int bit_pos, BitArray *array) : bit_pos(bit_pos), array(array) {}
 
 BitArray::Wrapper& BitArray::Wrapper::operator=(bool value){
-	if (value)
-		byte |= (1 << (bit_pos % BYTE));
-	else
-		byte &= (~(1 << (bit_pos % BYTE)));
+	(*array).set(bit_pos, value);
 
 	return *this;
 }
 
 BitArray::Wrapper::operator bool() const {
-	return byte & (1 << (bit_pos % BYTE));
+	return (*array).bit_arr[bit_pos / BYTE] & (1 << (bit_pos % BYTE));
 }
 
 BitArray::Wrapper BitArray::operator[](int index) {
 	if ((index >= (*this).size()) || (index < 0))
 		throw std::invalid_argument("There is no such bit's position in the bit array");
 
-	return Wrapper(index, bit_arr[index / BYTE]);
+	return Wrapper(index, this);
 }
 
 BitArray::Iterator::Iterator(int bit_pos, BitArray* array) : bit_pos(bit_pos), array(array) {}
@@ -32,7 +29,7 @@ BitArray::Wrapper BitArray::Iterator::operator*() const {
 	if ((bit_pos >= (*array).size()) || (bit_pos < 0))
 		throw std::invalid_argument("There is no such bit's position in the bit array");
 
-	return BitArray::Wrapper(bit_pos, (*array).bit_arr[bit_pos / BYTE]);
+	return BitArray::Wrapper(bit_pos, array);
 }
 
 BitArray::Iterator& BitArray::Iterator::operator++() {
