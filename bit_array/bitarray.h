@@ -14,10 +14,10 @@ public:
 	class Wrapper {
 	private:
 		int bit_pos;
-		char& byte;
+		BitArray *array;
 
 	public:
-		Wrapper(int bit_pos, const char& byte);
+		Wrapper(int bit_pos, BitArray *array);
 		Wrapper& operator=(bool value);
 		operator bool() const;
 	};
