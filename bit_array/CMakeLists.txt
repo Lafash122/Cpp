@@ -13,13 +13,7 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-#add_subdirectory(googletest-main/googletest)
-
-
-add_library(libs
-		bitarray.h
-		bitarray.cpp)
-
+add_library(libs bitarray.h bitarray.cpp)
 
 add_executable (bitarray main.cpp)
 
@@ -27,16 +21,9 @@ target_link_libraries(bitarray PRIVATE libs)
 
 enable_testing()
 
-add_executable(
-		tests
-		bitarray.cpp
-		tests.cpp
-)
+add_executable(tests bitarray.cpp tests.cpp)
 
-target_link_libraries(
-		tests
-		GTest::gtest_main
-)
+target_link_libraries(tests GTest::gtest_main)
 
 include(GoogleTest)
 gtest_discover_tests(tests)
