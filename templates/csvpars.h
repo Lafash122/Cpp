@@ -1,4 +1,4 @@
-﻿#ifndef CSV_PARS
+#ifndef CSV_PARS
 #define CSV_PARS
 
 #include <iostream>
@@ -64,11 +64,8 @@ public:
                 else
                     if (let == shield)
                         inside = true;
-                    else if ((let == splitter) || (let == '\n')) {
-                        while (stream.peek() == ' ')
-                            stream.get(let);
+                    else if ((let == splitter) || (let == '\n'))
                         break;
-                    }
                     else
                         val += let;
 
