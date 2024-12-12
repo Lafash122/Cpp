@@ -108,9 +108,8 @@ public:
                     throw std::runtime_error("Error in line " + std::to_string(line_num) + ": " + err.what());
                 }
             }
-            else {
+            else
                 input = nullptr;
-            }
 
             return *this;
         }
