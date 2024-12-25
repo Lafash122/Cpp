@@ -5,6 +5,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <sstream>
 #include "universe.h"
 
 class Game {
@@ -18,6 +19,10 @@ public:
 	void tick(int n);
 	void get_help();
 	void show_status();
+	Universe& get_universe();
+
+	friend std::ostream& operator<<(std::ostream& stream, const Universe& u);
+	friend std::istream& operator>>(std::istream& stream, Universe& u);
 };
 
 
