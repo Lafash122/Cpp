@@ -26,7 +26,11 @@ public:
 	void show_info();
 	void show_universe();
 
-	int get_size();
+	void set_name(std::string name);
+	void set_brule(std::vector<char> rb);
+	void set_srule(std::vector<char> rs);
+
+	int get_size() const;
 	const std::string& get_name() const;
 	const std::vector<char>& get_rb() const;
 	const std::vector<char>& get_rs() const;
