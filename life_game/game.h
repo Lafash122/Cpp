@@ -5,7 +5,6 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <sstream>
 #include "universe.h"
 
 class Game {
