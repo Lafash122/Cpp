@@ -34,14 +34,14 @@ void Universe::update_field(std::vector<std::vector<bool>> f) {
 }
 
 void Universe::show_info() {
-	std::cout << "Universe name: " << params.name;
+	std::cout << "Name: " << params.name;
 	std::cout << "\nBirh rule: ";
 	for (const auto& i : params.rule_birth)
 		std::cout << (int)i << " ";
-	std::cout << "\n";
+	std::cout << "\nSurvive rule: ";
 	for (const auto& i : params.rule_surve)
 		std::cout << (int)i << " ";
-	std::cout << "\n";
+	std::cout << "\nSize: " << params.size << "\n";
 }
 
 void Universe::show_universe() {
@@ -55,7 +55,19 @@ void Universe::show_universe() {
 	}
 }
 
-int Universe::get_size() {
+void Universe::set_name(std::string name) {
+	params.name = name;
+}
+
+void Universe::set_brule(std::vector<char> rb) {
+	params.rule_birth = rb;
+}
+
+void Universe::set_srule(std::vector<char> rs) {
+	params.rule_birth = rs;
+}
+
+int Universe::get_size() const {
 	return params.size;
 }
 
